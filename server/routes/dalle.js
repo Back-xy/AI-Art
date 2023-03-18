@@ -20,7 +20,7 @@ router
       const aiResponse = await openai.createImage({
         prompt,
         n: 1,
-        size: "384x384",
+        size: "256x256",
         response_format: "b64_json",
       });
       const img = aiResponse.data.data[0].b64_json;
