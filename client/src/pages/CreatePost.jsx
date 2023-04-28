@@ -61,7 +61,7 @@ const CreatePost = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ prompt: form.prompt }),
+            body: JSON.stringify({ prompt: form.prompt, size: "1024x1024" }),
           }
         );
         const data = await response.json();
