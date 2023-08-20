@@ -30,7 +30,7 @@ router
         if (error.response) {
         console.log("Avatar error status: ", error.response.status);
         console.log("Avatar error data: ", error.response.data);
-        res.status(500).send(error.response.status);
+        res.status(500).send(error.response.data.error.message);
       } else {
         console.log("Avatar error message: ", error.message);
         res.status(500).send(error.message);
