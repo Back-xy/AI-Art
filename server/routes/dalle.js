@@ -27,7 +27,13 @@ router
 
       res.status(200).json({ photo: img });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+        if (error.response) {
+        console.log("Avatar error status: ", error.response.status);
+        console.log("Avatar error data: ", error.response.data);
+      } else {
+        console.log("Avatar error message: ", error.message);
+      }
       res.status(500).send(error?.response.data.error.message);
     }
   });
