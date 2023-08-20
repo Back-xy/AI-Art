@@ -15,21 +15,14 @@ router
   .get((req, res) => res.send('Hello from DALL-E'))
   .post(async (req, res) => {
     try {
-      const { prompt, size } = req.body;
+      const { prompt } = req.body;
 
-      const response = await openai.createImage({
+      const aiResponse = await openai.createImage({
         prompt,
         n: 1,
         size: '1024x1024',
+        response_format: 'b64_json',
       });
-      image_url = response.data.data[0].url;
-
-      // const aiResponse = await openai.createImage({
-      //   prompt,
-      //   n: 1,
-      //   size: '512x512',
-      //   response_format: 'b64_json',
-      // });
       const img = aiResponse.data.data[0].b64_json;
 
       res.status(200).json({ photo: img });
