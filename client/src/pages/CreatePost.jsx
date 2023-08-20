@@ -35,7 +35,7 @@ const CreatePost = () => {
         await response.json();
         navigate("/");
       } catch (err) {
-        alert(err);
+        alert('Billing limit has been reached');
       } finally {
         setLoading(false);
       }
