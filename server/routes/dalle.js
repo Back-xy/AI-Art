@@ -17,12 +17,16 @@ router
     try {
       const { prompt, size } = req.body;
 
-      const aiResponse = await openai.createImage({
+      const aiResponse = await openai.images.generate({
         prompt,
-        n: 1,
-        size: '512x512',
-        response_format: 'b64_json',
       });
+
+      // const aiResponse = await openai.createImage({
+      //   prompt,
+      //   n: 1,
+      //   size: '512x512',
+      //   response_format: 'b64_json',
+      // });
       const img = aiResponse.data.data[0].b64_json;
 
       res.status(200).json({ photo: img });
